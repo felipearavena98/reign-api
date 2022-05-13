@@ -284,7 +284,7 @@ En este filtro de búsqueda podemos filtrar por title, _tags, author. Cualquiera
 ```
 
 
-### Configuracion del servidor
+### Configuración del servidor
 Por motivos de orden, las configuraciones del servidor se encuentran por separado, en el archivo server.js podemos encontrar las configuraciones tanto de las variables de entorno que nos sirven para conectarnos a la base de datos, establecer los paths de conexion para los endpoints, la configuración de la documentación de swagger, la configuración de las rutas y funciones y el puerto por defecto del servidor.
 
 ```javascript
@@ -350,7 +350,7 @@ class Server {
 module.exports = Server;
 ```
 
-### Conexion a base de datos
+### Conexión a base de datos
 Para poder establecer la conexión a la base de datos, estamos ocupando el ODM de mongoose, el que nos facilita la conexión y interacciones con la base de datos de mongodb, nos conectamos a la base de datos establecidas en las variables de entorno.
 
 ```javascript
@@ -443,7 +443,7 @@ cron.schedule('*/59 * * * *', async () => {
 })
 
 ```
-### Funcion para eliminar noticias - EndPoint
+### Función para eliminar noticias - EndPoint
 Cuando no nos sirve un elemento, lo podemos eliminar y/o deshabilitar como en este caso, nunca es conveniente eliminar un registro de manera completa de la base de datos, a no ser que sea muy requerido.
 
 ```javascript
@@ -456,7 +456,7 @@ const newsDelete = async (req, res = response) => {
 }
 ```
 
-### Controlador de Busqueda
+### Controlador de Búsqueda
 Una búsqueda personalizada es un elemento muy importante, ya que podremos acceder a la información que necesitamos.
 
 ```javascript
@@ -526,7 +526,7 @@ const buscar = (req, res = response) => {
 ```
 ## Rutas
 
-### Ruta para busqueda de notcias buscar.js
+### Ruta para búsqueda de notcias buscar.js
 
 ```javascript
 const { Router } = require("express")
@@ -538,7 +538,7 @@ router.get('/:coleccion/:termino', buscar)
 
 module.exports = router;
 ```
-### Ruta para busqueda de notcias news.js
+### Ruta para búsqueda de notcias news.js
 
 ```javascript
 const { Router } = require('express');
