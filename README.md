@@ -373,6 +373,7 @@ module.exports = {
 ```
 
 ## Controladores 
+El apartado de los controladores, contiene todas las funcionalidades base de la api, una de las funcionalidades mas importantes esta realizada con un cron, el cual permite ejecutar el llamado a la api cada cierto tiempo de manera indefinida.
 
 ### Importaciones de EndPoint Noticias
 
@@ -383,6 +384,7 @@ const Noticia = require('../models/news')
 const cron = require('node-cron')
 ```
 ### Funcion para obtener Noticias - EndPoint
+La función de obtener noticias contiene el limte de 5 elementos por pagina, y su respectivo contenido.
 
 ```javascript
 const newsGet = async (req = request, res = response) => {
@@ -406,6 +408,8 @@ const newsGet = async (req = request, res = response) => {
 
 ```
 ### Funcion para obtener Noticias por id - EndPoint
+Siempre es importante tener un buscador con un filtro para un elemento y/o dato en especifico.
+
 ```javascript
 const OnenewsGet = async (req, res = response, next) => {
     const { id } = req.params;
@@ -421,6 +425,9 @@ const OnenewsGet = async (req, res = response, next) => {
 ```
 
 ### Funcion para obtener noticias de la api y guardarlas en la base de datos - EndPoint
+Al ejecutar un cron con la api, podremos controlar las llamadas respectivas a esta, de forma que cada cierto tiempo trae elementos y los inserta en la base de datos.
+
+
 ```javascript
 cron.schedule('*/59 * * * *', async () => {
 
@@ -437,6 +444,7 @@ cron.schedule('*/59 * * * *', async () => {
 
 ```
 ### Funcion para eliminar noticias - EndPoint
+Cuando no nos sirve un elemento, lo podemos eliminar y/o deshabilitar como en este caso, nunca es conveniente eliminar un registro de manera completa de la base de datos, a no ser que sea muy requerido.
 
 ```javascript
 const newsDelete = async (req, res = response) => {
@@ -449,18 +457,22 @@ const newsDelete = async (req, res = response) => {
 ```
 
 ### Controlador de Busqueda
+Una búsqueda personalizada es un elemento muy importante, ya que podremos acceder a la información que necesitamos.
 
 ```javascript
 const { response } = require("express")
 const { isValidObjectId } = require("mongoose")
 const Noticia = require('../models/news')
 ```
+La única coleccion permitida para el filtro de búsquedas es la que lleva el mismo nombre de la base de datos.
 
 ```javascript
 const coleccionesPermitidas = [
     'noticias'
 ]
 ```
+
+Se utiliza un regex en el filtro de búsqueda, el cual nos permitira realizar mejores búsquedas de estos, ya que permite escribir tanto en mayúsculas y minúsculas o ambas.
 
 ```javascript
 const buscarNoticias = async (termino = '', res = response) => {
