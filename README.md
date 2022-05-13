@@ -12,6 +12,16 @@ El backend fue desarrollado en nodejs.
 - routes: En esta carpeta se encuentra la configuración de las rutas y los respectivos filtros para la base de datos que levantan la api.
 - index: contiene las configuraciones principales para levantar el backend.
 
+### Instalaciones Necesarias
+- [axios](https://www.npmjs.com/package/axios)
+- [cors](https://www.npmjs.com/package/cors)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+- [node-cron](https://www.npmjs.com/package/node-cron)
+- [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
+- [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
 ## Configuraciones
 Esta es la función que representa a la conexión de la base de datos, la cual nos permite acceder a los productos y categorías, los que posteriormente servirán para desarrollar las consultas y armar la API.
 
