@@ -8,8 +8,10 @@ El siguiente documento tiene el propósito de explicar el funcionamiento del bac
 ## Estructura
 El backend fue desarrollado en nodejs.
 ![App Screenshot](https://github.com/felipearavena98/imagenes/blob/main/img-proyecto-bsale/parte1BACK.png?raw=true)
-- db: En esta carpeta se encuentra la función que realiza la conexión a la base de datos.
-- routes: En esta carpeta se encuentra la configuración de las rutas y los respectivos filtros para la base de datos que levantan la api.
+- controllers: El contenido que se encuentra aquí, contiene las funciones de nuestra api.
+- database: La carpeta de database contiene la configuración de conexión a la Base de datos.
+- models: Contiene el modelo de la base de datos y la configuración del servidor.
+- routes: En esta carpeta se encuentra la configuración de las rutas de la api.
 - index: contiene las configuraciones principales para levantar el backend.
 
 ### Instalaciones Necesarias
