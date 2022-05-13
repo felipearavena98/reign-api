@@ -8,7 +8,9 @@ El siguiente documento tiene el propósito de explicar el funcionamiento del bac
 ## Estructura
 
 El backend fue desarrollado en nodejs.
+
 ![App Screenshot](https://github.com/felipearavena98/imagenes/blob/main/img-proyecto-bsale/parte1BACK.png?raw=true)
+
 - controllers: El contenido que se encuentra aquí, contiene las funciones de nuestra api.
 - database: La carpeta de database contiene la configuración de conexión a la Base de datos.
 - models: Contiene el modelo de la base de datos y la configuración del servidor.
@@ -25,13 +27,17 @@ El backend fue desarrollado en nodejs.
 - [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
 - [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 
-## Configuraciones
-Esta es la función que representa a la conexión de la base de datos, la cual nos permite acceder a los productos y categorías, los que posteriormente servirán para desarrollar las consultas y armar la API.
+## Configuraciones y Instrucciones
+- Los unicos archivos que se deben configurar son el .env y server.js.
+- Las siguientes instrucciones son para hacer funcionar la api, solo de manera local.
+
+
 
 
 ## Referencia API
 
 #### Endpoint para obtener todos las noticias
+Al obtener los datos de la api, se pasan de manera inmediata a la base de datos, este endpoint funciona para realizar la consulta a la base de datos y traer todos los datos que se encuentran en ella.
 
 ```http
   GET /api/news/
@@ -95,6 +101,7 @@ Esta es la función que representa a la conexión de la base de datos, la cual n
         },
 ```
 #### Endpoint para obtener solo 1 noticia filtrada por id
+Si queremos solo un elemento de la base de datos, podremos realizar una consulta mas personalizada, insertando solo el id de la noticia que queremos.
 
 ```http
   GET /api/news/idReference
@@ -153,7 +160,7 @@ Esta es la función que representa a la conexión de la base de datos, la cual n
 ```
 
 #### Endpoint para eliminar noticia
-
+Para eliminar un elemento de la base de datos, podemos ejecutar esta acción, lo que hace esta funcion es establecer un estado, el cual cambia al ser ejecutado y excluye este elemento de las futuras consultas. El motivo de esta funcionalidad al ser manejada con un estado, nos permite mantener un registro de un elemento que anteriormente estuvo disponible.
 ```http
   DELETE /api/news/idReference
 ```
@@ -278,6 +285,8 @@ En este filtro de búsqueda podemos filtrar por title, _tags, author. Cualquiera
 
 
 ### Configuracion del servidor
+Por motivos de orden, las configuraciones del servidor se encuentran por separado, en el archivo server.js podemos encontrar las configuraciones tanto de las variables de entorno que nos sirven para conectarnos a la base de datos, establecer los paths de conexion para los endpoints, la configuración de la documentación de swagger, la configuración de las rutas y funciones y el puerto por defecto del servidor.
+
 ```javascript
 const express = require('express')
 const cors = require('cors');
@@ -342,6 +351,7 @@ module.exports = Server;
 ```
 
 ### Conexion a base de datos
+Para poder establecer la conexión a la base de datos, estamos ocupando el ODM de mongoose, el que nos facilita la conexión y interacciones con la base de datos de mongodb, nos conectamos a la base de datos establecidas en las variables de entorno.
 
 ```javascript
 const mongoose = require('mongoose')
